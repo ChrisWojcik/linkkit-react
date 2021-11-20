@@ -1,0 +1,102 @@
+/* stylelint-disable no-invalid-position-at-import-rule */
+@use 'sass:math';
+
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.container {
+  width: 100%;
+  padding-right: $container-padding;
+  padding-left: $container-padding;
+  margin: 0 auto;
+
+  @include breakpoint-up(md) {
+    max-width: $content-max-width + ($container-padding-md * 2);
+    padding-right: $container-padding-md;
+    padding-left: $container-padding-md;
+  }
+}
+
+.containerNarrow {
+  composes: container;
+
+  @include breakpoint-up(md) {
+    max-width: $content-max-width-narrow + ($container-padding-md * 2);
+  }
+}
+
+@each $size, $spacer in $spacers {
+  .m-#{$size} {
+    margin: $spacer;
+  }
+
+  .mt-#{$size} {
+    margin-top: $spacer;
+  }
+
+  .mr-#{$size} {
+    margin-right: $spacer;
+  }
+
+  .mb-#{$size} {
+    margin-bottom: $spacer;
+  }
+
+  .ml-#{$size} {
+    margin-left: $spacer;
+  }
+
+  .mv-#{$size} {
+    margin-top: $spacer;
+    margin-bottom: $spacer;
+  }
+
+  .mh-#{$size} {
+    margin-right: $spacer;
+    margin-left: $spacer;
+  }
+
+  .p-#{$size} {
+    padding: $spacer;
+  }
+
+  .pt-#{$size} {
+    padding-top: $spacer;
+  }
+
+  .pr-#{$size} {
+    padding-right: $spacer;
+  }
+
+  .pb-#{$size} {
+    padding-bottom: $spacer;
+  }
+
+  .pl-#{$size} {
+    padding-left: $spacer;
+  }
+
+  .pv-#{$size} {
+    padding-top: $spacer;
+    padding-bottom: $spacer;
+  }
+
+  .ph-#{$size} {
+    padding-right: $spacer;
+    padding-left: $spacer;
+  }
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.srOnly {
+  @include sr-only();
+}
+
+.srOnlyFocusable {
+  @include sr-only-focusable();
+
+  composes: srOnly;
+}

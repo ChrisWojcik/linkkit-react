@@ -1,0 +1,15 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.list {
+  min-height: 100vh;
+}
+
+.listItem {
+  margin-bottom: $spacer-s;
+}
+
+.loadingIndicator {
+  display: block;
+  min-height: rem-calc(60);
+}

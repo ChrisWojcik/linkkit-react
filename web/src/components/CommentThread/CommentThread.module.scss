@@ -1,0 +1,17 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.commentThread {
+  padding-top: $spacer-m + $spacer-xs;
+  background: $white;
+}
+
+.directReply {
+  padding: 0 $spacer-m $spacer-m;
+  background: $white;
+
+  @include breakpoint-up(md) {
+    padding-right: $spacer-l;
+    padding-left: $spacer-l;
+  }
+}

@@ -1,0 +1,163 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+body.isOpen {
+  overflow: hidden;
+}
+
+.mainnav {
+  height: rem-calc(48);
+  outline: 0;
+}
+
+.navbar {
+  position: fixed;
+  z-index: $z-index-nav;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: rem-calc(48);
+  align-items: center;
+  padding: 0 $container-padding;
+  background: $blue-dark;
+
+  @include breakpoint-up(md) {
+    padding: 0 $container-padding-md;
+  }
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: 0 3px 5px 0 rgba($black, 0.2);
+    content: '';
+  }
+}
+
+.logo {
+  color: adjust-color($white, $lightness: -25%);
+  font-size: rem-calc(18);
+  font-weight: $font-weight-bold;
+  text-decoration: none;
+}
+
+.menuToggle {
+  display: flex;
+  width: rem-calc(44);
+  height: rem-calc(44);
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  margin-right: calc(#{rem-calc(44) - $container-padding} / -2);
+  margin-left: auto;
+  background: transparent;
+  cursor: pointer;
+
+  @include breakpoint-up(md) {
+    margin-right: calc(#{rem-calc(44) - $container-padding-md} / -2);
+  }
+
+  &:hover {
+    background: $blue-dark-hover;
+  }
+}
+
+.menuToggleIcon {
+  position: relative;
+  display: block;
+  width: rem-calc(20);
+  height: rem-calc(2);
+  background: $white;
+
+  &::before,
+  &::after {
+    position: absolute;
+    left: 50%;
+    width: rem-calc(14);
+    height: rem-calc(2);
+    margin-left: rem-calc(-7);
+    background: $white;
+    content: '';
+  }
+
+  &::before {
+    top: rem-calc(-8);
+  }
+
+  &::after {
+    bottom: rem-calc(-8);
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: $z-index-nav;
+  top: rem-calc(48);
+  bottom: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  background: rgba($black, 0.3);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  .isOpen & {
+    display: block;
+  }
+}
+
+.menuContainer {
+  position: relative;
+  z-index: 1;
+  padding: $spacer-s $container-padding $spacer-m;
+  background: $blue-dark;
+
+  @include breakpoint-up(md) {
+    padding-right: $container-padding-md;
+    padding-left: $container-padding-md;
+  }
+}
+
+.menuBackdrop {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.menuList {
+  margin-bottom: 1rem;
+}
+
+.menuListItem {
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.menuListLink {
+  display: block;
+  color: $white;
+  font-weight: 700;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.menuBtn {
+  & + & {
+    margin-top: $spacer-s;
+  }
+}

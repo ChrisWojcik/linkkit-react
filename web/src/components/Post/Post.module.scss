@@ -1,0 +1,103 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.post {
+  padding: $spacer-m $spacer-m $spacer-s;
+  border: 1px solid transparent;
+  background: $white;
+
+  @include breakpoint-up(md) {
+    padding-right: $spacer-l;
+    padding-left: $spacer-l;
+  }
+
+  &:not(.isFocal) {
+    cursor: pointer;
+  }
+
+  &:not(.isFocal):hover,
+  &:not(.isFocal):focus-within {
+    border-color: $gray;
+    box-shadow: 1px 1px 10px 0 rgba($gray, 1);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: 0;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $spacer-m;
+}
+
+.title {
+  margin: 0;
+  color: $off-black;
+  font-size: rem-calc(18);
+
+  .isFocal & {
+    font-size: rem-calc(24);
+    line-height: 1.33333333;
+  }
+}
+
+.meta {
+  margin-bottom: $spacer-s;
+  color: $gray-dark;
+  font-size: rem-calc(12);
+
+  a {
+    padding: $spacer-s 0;
+    color: $gray-dark;
+
+    &:hover,
+    &:focus {
+      color: $black;
+      text-decoration: underline;
+    }
+  }
+
+  &Separator {
+    padding: 0 $spacer-xs;
+  }
+}
+
+.body {
+  margin-bottom: $spacer-m;
+}
+
+.outboundLink {
+  @include text-link();
+
+  padding: $spacer-xs $spacer-s $spacer-xs 0;
+  font-size: rem-calc(14);
+}
+
+.text {
+  margin: 0;
+  font-size: rem-calc(14);
+  white-space: pre-line;
+
+  .isFocal & {
+    font-size: rem-calc(16);
+  }
+}
+
+.footer {
+  margin: 0 (-$spacer-s) $spacer-xs;
+  color: $gray-dark;
+}
+
+.footerButton {
+  padding-right: $spacer-s;
+  padding-left: $spacer-s;
+  margin-right: $spacer-xs;
+}
+
+.commentButton {
+  .isFocal & {
+    pointer-events: none;
+  }
+}

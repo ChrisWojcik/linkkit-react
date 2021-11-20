@@ -1,0 +1,19 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.commentForm {
+  background: $white;
+
+  &.isFocal {
+    padding: $spacer-m;
+
+    @include breakpoint-up(md) {
+      padding-right: $spacer-l;
+      padding-left: $spacer-l;
+    }
+  }
+
+  .cancelButton {
+    margin-right: $spacer-s;
+  }
+}

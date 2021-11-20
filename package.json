@@ -1,0 +1,29 @@
+{
+  "name": "linkkit-react",
+  "version": "1.0.0",
+  "description": "A reddit clone",
+  "private": true,
+  "engines": {
+    "node": "16.10.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "npm run dev-env -- start && concurrently --kill-others \"npm run start:dev -w api\" \"npm run dev -w web\"",
+    "db:migrate": "cd api && sequelize-cli db:migrate",
+    "db:migrate:rollback": "cd api && sequelize-cli db:migrate:undo",
+    "db:migrate:make": "cd api && sequelize-cli migration:generate",
+    "db:seed": "cd api && sequelize-cli db:seed",
+    "db:seed:undo": "cd api && sequelize-cli db:seed:undo",
+    "db:seed:all": "cd api && sequelize-cli db:seed:all",
+    "db:seed:make": "cd api && sequelize-cli seed:generate",
+    "dev-env": "bash ./local-dev-env/scripts/dev-env.sh"
+  },
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "devDependencies": {
+    "concurrently": "^6.4.0",
+    "husky": "^7.0.4"
+  }
+}

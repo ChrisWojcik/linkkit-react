@@ -1,0 +1,23 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.form {
+  display: block;
+}
+
+.footer {
+  position: relative;
+  padding: $spacer-m;
+  background: $white;
+  text-align: right;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: $spacer-m;
+    left: $spacer-m;
+    height: 1px;
+    background: $gray-light;
+    content: '';
+  }
+}
