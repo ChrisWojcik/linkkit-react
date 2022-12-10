@@ -1,0 +1,93 @@
+@use 'sass:color';
+
+// Variables
+
+// colors
+$white: #fff;
+$black: #000;
+$off-black: #1a1a1b;
+$blue: #0079d3;
+$blue-dark: #1d2535;
+$white-hover: #efefef;
+$white-blue-hover: rgba($blue, 0.05);
+$blue-hover: color.adjust($blue, $lightness: -5%);
+$blue-dark-hover: color.adjust($blue-dark, $lightness: 10%);
+$red: #ff4500;
+$gray-blue: #dae0e6;
+$gray: #ccc;
+$gray-light: #dedede;
+$gray-dark: #767676;
+$error: #dc3545;
+
+// typography
+$font-family-body: -apple-system, blinkmacsystemfont, segoe ui, roboto, oxygen,
+  ubuntu, cantarell, fira sans, droid sans, helvetica neue, sans-serif;
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+$base-font-context: 16; // 16px (used in rem-calc calculations)
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+// breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1400,
+);
+
+// spacers
+$spacer-xs: 0.25rem; // 4px
+$spacer-s: 0.5rem; // 8px
+$spacer-m: 1rem; // 16px
+$spacer-l: 1.5rem; // 24px
+$spacer-xl: 2rem; // 32px
+$spacer-xxl: 4rem; // 64px
+
+$spacers: (
+  xs: $spacer-xs,
+  s: $spacer-s,
+  m: $spacer-m,
+  l: $spacer-l,
+  xl: $spacer-xl,
+  xxl: $spacer-xxl,
+);
+
+// layout
+$content-max-width: 70rem; // 1120px
+$content-max-width-narrow: 46.25rem; // 740px;
+$container-padding: $spacer-m;
+$container-padding-md: $spacer-l;
+
+// z-index
+$z-index-nav: 1000;
+
+// transitions
+$transition-fast: 0.1s;
+$transition-med: 0.2s;
+$transition-slow: 0.4s;
+
+// buttons
+$btn-font-family: $font-family-body;
+$btn-font-size: 0.9375rem;
+$btn-font-weight: 700;
+$btn-line-height: 1.5;
+$btn-padding-y: 0.5rem;
+$btn-padding-x: 1rem;
+$btn-min-width: 2.5rem;
+$btn-border-radius: 0.125rem;
+$btn-border-radius-rounded: 999px;
+$btn-padding-y-sm: 0.375rem;
+$btn-padding-x-sm: 0.75rem;
+$btn-font-size-sm: 0.8125rem;
+
+// inputs
+$input-padding-y: 0.5rem;
+$input-padding-x: 0.9375rem;
+$input-font-family: $font-family-body;
+$input-font-size: 1rem;
+$input-font-weight: $font-weight-regular;
+$input-line-height: 1.25;
+$input-border-width: 1px;

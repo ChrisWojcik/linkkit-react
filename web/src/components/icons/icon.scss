@@ -1,0 +1,12 @@
+@import '@/web/styles/variables';
+@import '@/web/styles/mixins';
+
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 1.42857143em;
+  height: 1.42857143em;
+  flex: none;
+  fill: currentcolor;
+  vertical-align: middle;
+}

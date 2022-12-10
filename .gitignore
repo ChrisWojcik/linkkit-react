@@ -1,0 +1,14 @@
+node_modules/
+coverage/
+/build
+/dist
+.eslintcache
+.idea/
+.vscode/
+.DS_Store
+*.tgz
+npm-debug.log*
+.env
+*.mp4
+*.crt
+*.key

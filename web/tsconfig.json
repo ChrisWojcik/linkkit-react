@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "module": "commonjs",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "types": ["node"],
+    "typeRoots": ["./src/@types", "./node_modules/@types"],
+    "lib": ["es6", "dom"],
+    "jsx": "react",
+    "paths": {
+      "@/web/*": ["src/*"],
+      "@/api/*": ["../api/src/*"]
+    }
+  },
+  "include": ["src/**/*", "webpack.config.ts"],
+  "references": [{ "path": "../api" }]
+}

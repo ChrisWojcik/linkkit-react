@@ -1,0 +1,24 @@
+@import '@/web/styles/variables';
+@import '@/web/styles/mixins';
+
+.submit-post-form__form {
+  display: block;
+}
+
+.submit-post-form__footer {
+  position: relative;
+  padding-top: $spacer-m;
+  margin-top: $spacer-m;
+  background: $white;
+  text-align: right;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: $gray-light;
+    content: '';
+  }
+}

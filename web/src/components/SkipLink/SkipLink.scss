@@ -1,0 +1,19 @@
+@import '@/web/styles/variables';
+@import '@/web/styles/mixins';
+
+.skip-link {
+  @include sr-only;
+  @include sr-only-focusable;
+  @include text-link;
+
+  display: inline-block;
+  padding: $spacer-s;
+  background: $white;
+
+  &:focus {
+    position: absolute;
+    z-index: $z-index-nav + 1;
+    top: 0;
+    left: 0;
+  }
+}

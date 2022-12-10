@@ -1,0 +1,25 @@
+{
+  "name": "linkkit-react-express",
+  "version": "0.0.0",
+  "description": "A reddit clone",
+  "private": true,
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "scripts": {
+    "dev": "npm run dev-env start && concurrently --kill-others \"npm run start:dev -w api\" \"npm run dev -w web\"",
+    "dev-env": "bash ./local-dev-env/scripts/dev-env.sh",
+    "db:migrate:dev": "npm run db:migrate:dev -w api",
+    "db:migrate:undo:dev": "npm run db:migrate:undo:dev -w api",
+    "db:seed:dev": "npm run db:seed:dev -w api",
+    "migration:generate:dev": "npm run migration:generate:dev -w api",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "npm run format --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^7.5.0",
+    "env-cmd": "^10.1.0"
+  }
+}

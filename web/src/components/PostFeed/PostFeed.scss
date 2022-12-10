@@ -1,0 +1,10 @@
+@import '@/web/styles/variables';
+@import '@/web/styles/mixins';
+
+.post-feed {
+  min-height: 100vh;
+}
+
+.post-feed__item {
+  margin-bottom: $spacer-s;
+}

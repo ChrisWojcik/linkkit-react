@@ -1,0 +1,130 @@
+// Global Styles
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+html {
+  height: 100%;
+  cursor: default;
+  line-height: $line-height-base;
+  overflow-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+}
+
+body {
+  height: 100%;
+  background: $gray-blue;
+  color: $off-black;
+  font-family: $font-family-body;
+  font-size: $font-size-base;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+[hidden] {
+  display: none;
+}
+
+[aria-busy='true'] {
+  cursor: progress;
+}
+
+[aria-controls] {
+  cursor: pointer;
+}
+
+[aria-disabled='true'],
+[disabled] {
+  cursor: not-allowed;
+}
+
+[aria-hidden='false'][hidden] {
+  display: initial;
+}
+
+[aria-hidden='false'][hidden]:not(:focus) {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 $spacer-m;
+  font-weight: $font-weight-bold;
+  outline: 0;
+}
+
+h1 {
+  font-size: rem-calc(40);
+}
+
+h2 {
+  font-size: rem-calc(32);
+}
+
+h3 {
+  font-size: rem-calc(24);
+}
+
+h4 {
+  font-size: rem-calc(20);
+}
+
+h5 {
+  font-size: rem-calc(16);
+}
+
+h6 {
+  font-size: rem-calc(12);
+}
+
+hr {
+  height: 0;
+  border: 0;
+  border-top: 1px solid $gray-light;
+  margin: $spacer-m 0;
+}
+
+#app {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  background: $gray-blue;
+  outline: 0;
+
+  > header {
+    flex: none;
+  }
+
+  > main {
+    flex: 1 0 auto;
+  }
+}

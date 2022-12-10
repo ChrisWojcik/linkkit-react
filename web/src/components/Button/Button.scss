@@ -1,0 +1,94 @@
+@import '@/web/styles/variables';
+@import '@/web/styles/mixins';
+
+.button {
+  display: inline-flex;
+  min-width: $btn-min-width;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  padding: $btn-padding-y $btn-padding-x;
+  border: 1px solid $blue;
+  border-radius: $btn-border-radius;
+  margin: 0;
+  background-color: $blue;
+  color: $white;
+  cursor: pointer;
+  font-family: $btn-font-family;
+  font-size: $btn-font-size;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  text-align: center;
+  text-decoration: none;
+  transition-duration: $transition-fast;
+  transition-property: color, background-color, border-color;
+  transition-timing-function: ease-in-out;
+  user-select: none;
+  vertical-align: middle;
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:hover:not([aria-disabled='true']) {
+    border-color: $blue-hover;
+    background-color: $blue-hover;
+    text-decoration: none;
+  }
+
+  &--size-small {
+    padding: $btn-padding-y-sm $btn-padding-x-sm;
+    font-size: $btn-font-size-sm;
+  }
+
+  &--variant-secondary {
+    border-color: $gray-light;
+    background-color: $gray-light;
+    color: $off-black;
+
+    &:hover:not([aria-disabled='true']) {
+      border-color: $gray;
+      background-color: $gray;
+      color: $off-black;
+    }
+  }
+
+  &--variant-outlined {
+    border-width: 1.5px;
+    border-color: $gray-light;
+    background-color: $white;
+    color: $gray-dark;
+
+    &:hover:not([aria-disabled='true']) {
+      border-color: $gray-light;
+      background-color: $white-hover;
+      color: $gray-dark;
+    }
+  }
+
+  &--variant-white {
+    border-color: $white;
+    background-color: $white;
+    color: $gray-dark;
+
+    &:hover:not([aria-disabled='true']) {
+      border-color: $white-hover;
+      background-color: $white-hover;
+    }
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--rounded {
+    border-radius: $btn-border-radius-rounded;
+  }
+
+  .icon {
+    display: inline-flex;
+    margin-right: $spacer-s;
+  }
+}

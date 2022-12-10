@@ -1,0 +1,8 @@
+@use 'sass:math';
+
+// Functions
+
+// Converts pixel value into matching rem values
+@function rem-calc($pixels, $context: $base-font-context) {
+  @return math.div($pixels, $context) * 1rem;
+}

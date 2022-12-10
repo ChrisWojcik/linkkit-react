@@ -1,0 +1,9 @@
+@import '@/web/styles/variables';
+@import '@/web/styles/mixins';
+
+.tablist {
+  display: flex;
+  overflow: auto;
+  border-top-left-radius: rem-calc(4);
+  border-top-right-radius: rem-calc(4);
+}

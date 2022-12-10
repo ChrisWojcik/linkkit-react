@@ -1,0 +1,58 @@
+@use 'sass:color';
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  border: $input-border-width solid $gray-light;
+  border-radius: rem-calc(4);
+  appearance: none;
+  background-clip: padding-box;
+  background-color: $white;
+  color: $off-black;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
+  line-height: $input-line-height;
+  transition-duration: $transition-fast;
+  transition-property: color, background-color, border-color;
+  transition-timing-function: ease-in-out;
+
+  &:focus {
+    border-color: $off-black;
+    outline: 0;
+  }
+
+  &::placeholder {
+    color: color.adjust($gray-dark, $lightness: 15%);
+
+    // Override Firefox's unusual default opacity
+    opacity: 1;
+  }
+
+  &:disabled,
+  &[readonly] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.form-control--has-error {
+    border-color: $error;
+
+    &:focus {
+      border-color: $error;
+    }
+  }
+}
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+textarea.form-control {
+  resize: vertical;
+}
+
+.form-error {
+  display: block;
+  margin-top: $spacer-xs;
+  color: $error;
+  font-size: rem-calc(14);
+}
