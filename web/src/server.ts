@@ -5,7 +5,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfigFn from '../webpack.config';
-import { User } from '@/api/modules/auth/models';
+import { User } from '@/web/lib/api';
 
 const app = express();
 

@@ -10,14 +10,14 @@ import {
   truncateLink,
   removeOriginFromUrl,
 } from '@/web/lib/utils';
-import { Post as PostModel } from '@/api/modules/posts/models';
+import { PostWithNormalizedComments } from '@/web/lib/api';
 
 import './Post.scss';
 
 interface PostProps extends React.ComponentPropsWithoutRef<'article'> {
   isFocal?: boolean;
   linkify?: boolean;
-  post: PostModel;
+  post: PostWithNormalizedComments;
 }
 
 function Post({

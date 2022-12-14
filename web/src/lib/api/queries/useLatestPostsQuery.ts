@@ -1,9 +1,8 @@
 import { useQuery } from 'react-query';
-import { callApi } from '../callApi';
-import { Post } from '@/api/modules/posts/models';
+import { callApi, PostWithNormalizedComments } from '@/web/lib/api';
 
 export function useLatestPostsQuery() {
   return useQuery(['posts'], async ({ signal }) =>
-    callApi<Post[]>(`/api/posts.latest`, { signal })
+    callApi<PostWithNormalizedComments[]>(`/api/posts.latest`, { signal })
   );
 }

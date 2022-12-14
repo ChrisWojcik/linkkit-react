@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { User } from '@/api/modules/auth/models';
+import { User } from '@/web/lib/api';
 
 export const CurrentUserContext = createContext({
   user: null,

@@ -6,7 +6,7 @@ import isURL from 'validator/lib/isURL';
 import { FormInput, FormTextArea, FormSubmit } from '@/web/components/forms';
 import { Tabs, TabList, Tab, TabPanel } from '@/web/components/Tabs';
 import { IconLink, IconFileText } from '@/web/components/icons';
-import { useCreatePostMutation } from '@/web/lib/api/mutations';
+import { useCreatePostMutation } from '@/web/lib/api';
 import { removeOriginFromUrl } from '@/web/lib/utils';
 
 import './SubmitPostForm.scss';

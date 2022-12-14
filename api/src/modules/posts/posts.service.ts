@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { Sequelize, FindOptions } from 'sequelize';
 import { User } from '@/api/modules/auth/models';
 import { Post, Comment } from './models';
-import { CreatePostDto, GetPostQueryParams } from './dto';
+import { CreatePostDto, AddCommentDto, GetPostQueryParams } from './dto';
 
 @Injectable()
 export class PostsService {
@@ -99,5 +99,14 @@ export class PostsService {
     });
 
     return this.findById(id);
+  }
+
+  async addComment(addCommentDto: AddCommentDto, user: User): Promise<Comment> {
+    const { id } = await this.commentModel.create({
+      ...addCommentDto,
+      userId: user.id,
+    });
+
+    return this.commentModel.findOne({ where: { id }, include: [User] });
   }
 }

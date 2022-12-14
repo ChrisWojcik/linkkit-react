@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useLatestPostsQuery } from '@/web/lib/api/queries';
+import { useLatestPostsQuery } from '@/web/lib/api';
 import Post from '@/web/components/Post';
 
 import './PostFeed.scss';

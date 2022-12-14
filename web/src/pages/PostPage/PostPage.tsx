@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet';
 
 import { NotFoundPage } from '@/web/pages';
 import Post from '@/web/components/Post';
-import { usePostByIdQuery } from '@/web/lib/api/queries';
+import CommentThread from '@/web/components/CommentThread';
+import { usePostByIdQuery } from '@/web/lib/api';
 
 export default function PostPage() {
   const { postId } = useParams();
@@ -36,6 +37,7 @@ export default function PostPage() {
           isFocal={true}
           linkify={false}
         />
+        <CommentThread postId={post.id} comments={post.comments} />
       </div>
     </>
   );

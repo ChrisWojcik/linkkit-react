@@ -1,0 +1,13 @@
+@import '@/web/styles/variables';
+@import '@/web/styles/mixins';
+
+.comment-thread__direct-reply {
+  padding: $spacer-m;
+  margin-top: $spacer-xs;
+  background: $white;
+
+  @include breakpoint-up(md) {
+    padding-right: $spacer-l;
+    padding-left: $spacer-l;
+  }
+}

@@ -7,8 +7,8 @@ import { AuthenticatedGuard } from '@/api/modules/auth/guards';
 import { User } from '@/api/modules/auth/models';
 import { CurrentUser } from '@/api/modules/auth/decorators';
 import { PostsService } from './posts.service';
-import { CreatePostDto, GetPostQueryParams } from './dto';
-import { Post as PostModel } from './models';
+import { CreatePostDto, AddCommentDto, GetPostQueryParams } from './dto';
+import { Post as PostModel, Comment } from './models';
 
 @Controller()
 export class PostsController {
@@ -34,5 +34,14 @@ export class PostsController {
     @CurrentUser() user: User
   ): Promise<PostModel> {
     return this.postsService.create(createPostDto, user);
+  }
+
+  @Post('api/posts.comment')
+  @UseGuards(AuthenticatedGuard)
+  async comment(
+    @Body(ValidationPipe) addCommentDto: AddCommentDto,
+    @CurrentUser() user: User
+  ): Promise<Comment> {
+    return this.postsService.addComment(addCommentDto, user);
   }
 }
