@@ -4,6 +4,7 @@ import session from 'express-session';
 import passport from 'passport';
 import { createClient } from 'redis';
 import createRedisStore from 'connect-redis';
+import morgan from 'morgan';
 import { AppModule } from '@/api/app.module';
 
 async function bootstrap() {
@@ -21,6 +22,8 @@ async function bootstrap() {
   });
 
   await redisClient.connect();
+
+  app.use(morgan('tiny'));
 
   app.use(
     session({
