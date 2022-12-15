@@ -31,11 +31,5 @@ import { PostsModule } from '@/api/modules/posts/posts.module';
     PostsModule,
   ],
   controllers: [AppController],
-  /*providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: ClassSerializerInterceptor,
-    },
-  ],*/
 })
 export class AppModule {}
