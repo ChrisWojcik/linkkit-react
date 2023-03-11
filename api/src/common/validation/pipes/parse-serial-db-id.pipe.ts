@@ -6,7 +6,7 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { isEmpty } from 'class-validator';
-import { isSerial } from '@/api/common/validation/lib';
+import { isIntegerString, isSerial } from '@/api/common/validation/lib';
 
 /**
  * throws a 400 if the value is empty or a 404 if the value is not a valid db id
@@ -21,7 +21,7 @@ export class ParseSerialDbIdPipe implements PipeTransform {
       throw new BadRequestException([`${data || type} should not be empty`]);
     }
 
-    if (!this.isNumeric(value)) {
+    if (!isIntegerString(value)) {
       throw new NotFoundException();
     }
 
@@ -32,13 +32,5 @@ export class ParseSerialDbIdPipe implements PipeTransform {
     }
 
     return asInteger;
-  }
-
-  protected isNumeric(value: string): boolean {
-    return (
-      ['string', 'number'].includes(typeof value) &&
-      /^-?\d+$/.test(value) &&
-      isFinite(value as any)
-    );
   }
 }
