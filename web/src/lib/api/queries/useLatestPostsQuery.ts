@@ -1,8 +1,16 @@
-import { useQuery } from 'react-query';
-import { callApi, PostWithNormalizedComments } from '@/web/lib/api';
+import { useInfiniteQuery } from 'react-query';
+import { callApi, PaginatedPosts } from '@/web/lib/api';
 
 export function useLatestPostsQuery() {
-  return useQuery(['posts'], async ({ signal }) =>
-    callApi<PostWithNormalizedComments[]>(`/api/posts.latest`, { signal })
+  return useInfiniteQuery(
+    ['posts'],
+    async ({ pageParam, signal }) =>
+      callApi<PaginatedPosts>(
+        `/api/posts.latest${pageParam ? `?cursor=${pageParam}` : ''}`,
+        { signal }
+      ),
+    {
+      getNextPageParam: (lastPage) => lastPage.nextCursor || undefined,
+    }
   );
 }

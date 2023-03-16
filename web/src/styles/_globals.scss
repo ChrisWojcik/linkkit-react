@@ -17,6 +17,7 @@ html {
   cursor: default;
   line-height: $line-height-base;
   overflow-wrap: break-word;
+  scroll-padding-top: calc(var(--scroll-padding-top, 0) + #{$spacer-s});
   -webkit-tap-highlight-color: transparent;
   text-size-adjust: 100%;
 }

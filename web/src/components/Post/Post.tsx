@@ -14,11 +14,17 @@ import { PostWithNormalizedComments } from '@/web/lib/api';
 
 import './Post.scss';
 
-interface PostProps extends React.ComponentPropsWithoutRef<'article'> {
-  isFocal?: boolean;
-  linkify?: boolean;
-  post: PostWithNormalizedComments;
-}
+type A11yFeedItemProps = {
+  ['aria-setsize']: number;
+  ['aria-posinset']: number;
+};
+
+type PostProps = React.ComponentPropsWithoutRef<'article'> &
+  A11yFeedItemProps & {
+    isFocal?: boolean;
+    linkify?: boolean;
+    post: PostWithNormalizedComments;
+  };
 
 function Post({
   id,

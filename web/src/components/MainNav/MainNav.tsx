@@ -66,6 +66,13 @@ function MainNav() {
     setCurrentUrl(window.location.href);
   }, [location]);
 
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--scroll-padding-top',
+      $el.current.offsetHeight + 'px'
+    );
+  }, []);
+
   return (
     <div ref={$el} className="main-nav" tabIndex={-1}>
       <div className="main-nav__navbar">

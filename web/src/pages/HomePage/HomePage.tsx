@@ -12,7 +12,7 @@ export default function HomePage() {
       </Helmet>
       <div className="container pv-l">
         <PostFeedToolbar />
-        <PostFeed />
+        <PostFeed aria-label="Latest Posts" />
       </div>
     </>
   );

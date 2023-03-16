@@ -39,3 +39,8 @@ export type PostWithNormalizedComments = Omit<Post, 'comments'> &
   Partial<{
     comments: NormalizedComments;
   }>;
+
+export type PaginatedPosts = {
+  posts: PostWithNormalizedComments[];
+  nextCursor: string;
+};

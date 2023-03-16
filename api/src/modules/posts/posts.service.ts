@@ -1,9 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
-import { Sequelize, FindOptions } from 'sequelize';
+import { Sequelize, FindOptions, Op } from 'sequelize';
+import { PaginatedModel, PaginationCursor } from '@/api/common/pagination';
 import { User } from '@/api/modules/auth/models';
 import { Post, Comment } from './models';
-import { CreatePostDto, AddCommentDto, GetPostQueryParams } from './dto';
+import {
+  CreatePostDto,
+  AddCommentDto,
+  GetPostQueryParams,
+  PostsListCursor,
+} from './dto';
 
 @Injectable()
 export class PostsService {
@@ -14,10 +20,14 @@ export class PostsService {
     private readonly commentModel: typeof Comment
   ) {}
 
-  async findLatest(): Promise<Post[]> {
+  async findLatest(
+    cursor?: PostsListCursor
+  ): Promise<PaginatedModel<'posts', Post, PostsListCursor>> {
+    const perPage = 20;
+
     const query: FindOptions<Post> = {
       subQuery: false,
-      limit: 20,
+      limit: perPage + 1,
       order: [['id', 'DESC']],
       attributes: {
         include: [
@@ -41,7 +51,24 @@ export class PostsService {
       group: ['Post.id', 'user.id'],
     };
 
-    return this.postModel.findAll(query);
+    if (cursor) {
+      query.where = {
+        id: {
+          [Op.lte]: cursor.id,
+        },
+      };
+    }
+
+    const posts = await this.postModel.findAll(query);
+
+    let nextCursor = null;
+
+    if (posts.length > perPage) {
+      const nPlusOnePost = posts.pop();
+      nextCursor = new PaginationCursor({ id: nPlusOnePost.id });
+    }
+
+    return { posts, nextCursor };
   }
 
   async findById(id: number, options: GetPostQueryParams = {}): Promise<Post> {

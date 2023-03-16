@@ -2,12 +2,19 @@ import { Controller, Query, Body, Get, Post, UseGuards } from '@nestjs/common';
 import {
   ValidationPipe,
   ParseSerialDbIdPipe,
+  ParsePaginationCursorPipe,
 } from '@/api/common/validation/pipes';
+import { PaginatedModel } from '@/api/common/pagination';
 import { AuthenticatedGuard } from '@/api/modules/auth/guards';
 import { User } from '@/api/modules/auth/models';
 import { CurrentUser } from '@/api/modules/auth/decorators';
 import { PostsService } from './posts.service';
-import { CreatePostDto, AddCommentDto, GetPostQueryParams } from './dto';
+import {
+  CreatePostDto,
+  AddCommentDto,
+  GetPostQueryParams,
+  PostsListCursor,
+} from './dto';
 import { Post as PostModel, Comment } from './models';
 
 @Controller()
@@ -15,8 +22,10 @@ export class PostsController {
   constructor(private readonly postsService: PostsService) {}
 
   @Get('api/posts.latest')
-  async findLatest(): Promise<PostModel[]> {
-    return this.postsService.findLatest();
+  async findLatest(
+    @Query('cursor', ParsePaginationCursorPipe) cursor: PostsListCursor
+  ): Promise<PaginatedModel<'posts', PostModel, PostsListCursor>> {
+    return this.postsService.findLatest(cursor);
   }
 
   @Get('api/posts.get')

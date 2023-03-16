@@ -8,3 +8,8 @@
 .post-feed__item {
   margin-bottom: $spacer-s;
 }
+
+.post-feed__loading-indicator {
+  display: block;
+  min-height: rem-calc(60);
+}
