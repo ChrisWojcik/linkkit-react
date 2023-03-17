@@ -102,7 +102,11 @@ function Post({
             <TimeAgo dateTime={post.createdAt} />
           )}
         </p>
-        <PostTitle id={`${idAttribute}__title`} className="post__title">
+        <PostTitle
+          id={`${idAttribute}__title`}
+          className="post__title"
+          tabIndex={-1}
+        >
           {linkify ? (
             <Link to={href} onClick={stopPropagation} ref={$link}>
               {post.title}
