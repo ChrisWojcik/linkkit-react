@@ -1,6 +1,6 @@
 import React, { useMemo, createContext, useContext } from 'react';
 import { NormalizedComments } from '@/web/lib/api';
-import { CurrentUserContext } from '@/web/lib/auth';
+import { AuthContext } from '@/web/lib/auth';
 import CommentForm from '@/web/components/CommentForm';
 import Comment from '@/web/components/Comment';
 
@@ -20,7 +20,7 @@ export default function CommentThread({
   comments,
   postId,
 }: CommentThreadProps) {
-  const { isAuthenticated } = useContext(CurrentUserContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <CommentThreadContext.Provider value={comments}>

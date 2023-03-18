@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
+import { AuthContext } from '@/web/lib/auth';
 
 interface ProtectedRouteProps {
-  isAllowed: boolean;
   redirectPath: string;
-  element: React.ReactElement;
+  children: React.ReactElement;
 }
 
 export function ProtectedRoute({
-  isAllowed,
   redirectPath,
-  element,
+  children,
 }: ProtectedRouteProps) {
-  return isAllowed ? element : <Navigate to={redirectPath} replace />;
+  const { isAuthenticated } = useContext(AuthContext);
+
+  return isAuthenticated ? children : <Navigate to={redirectPath} replace />;
 }

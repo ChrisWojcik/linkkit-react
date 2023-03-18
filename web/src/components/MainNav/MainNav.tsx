@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import Button from '@/web/components/Button';
 import { IconGitHub, IconLogout } from '@/web/components/icons';
-import { CurrentUserContext } from '@/web/lib/auth';
+import { AuthContext } from '@/web/lib/auth';
 import { baseUrl } from '@/web/lib/utils';
 
 import './MainNav.scss';
@@ -16,7 +16,7 @@ function MainNav() {
   const $menu = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentUrl, setCurrentUrl] = useState('');
-  const { isAuthenticated } = useContext(CurrentUserContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const location = useLocation();
 
   function restrictFocus(e: FocusEvent) {

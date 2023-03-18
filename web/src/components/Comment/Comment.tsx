@@ -1,5 +1,5 @@
 import React, { useState, useContext, useMemo, useRef } from 'react';
-import { CurrentUserContext } from '@/web/lib/auth';
+import { AuthContext } from '@/web/lib/auth';
 import { CommentThreadContext } from '@/web/components/CommentThread';
 import TimeAgo from '@/web/components/TimeAgo';
 import Button from '@/web/components/Button';
@@ -14,7 +14,7 @@ interface CommentProps {
 }
 
 export default function Comment({ comment }: CommentProps) {
-  const { isAuthenticated } = useContext(CurrentUserContext);
+  const { isAuthenticated } = useContext(AuthContext);
   const [isShowingReplyForm, setIsShowingReplyForm] = useState(false);
 
   const $replyButton = useRef(null);

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { CurrentUserProvider } from '@/web/lib/auth';
-import Router from './Router';
+import { RouterProvider } from 'react-router-dom';
+import { AuthProvider } from '@/web/lib/auth';
 import RouteAnnouncer from '@/web/components/RouteAnnouncer';
+import router from './router';
 
 function App() {
   const [queryClient] = useState(
@@ -18,15 +19,13 @@ function App() {
       })
   );
 
-  const user = window.__INITIAL_STATE__?.auth?.user || null;
-
   return (
-    <CurrentUserProvider user={user}>
+    <AuthProvider>
       <QueryClientProvider client={queryClient}>
-        <Router />
+        <RouterProvider router={router} />
         <RouteAnnouncer />
       </QueryClientProvider>
-    </CurrentUserProvider>
+    </AuthProvider>
   );
 }
 
