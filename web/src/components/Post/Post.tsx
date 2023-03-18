@@ -15,8 +15,8 @@ import { PostWithNormalizedComments } from '@/web/lib/api';
 import './Post.scss';
 
 type A11yFeedItemProps = {
-  ['aria-setsize']: number;
-  ['aria-posinset']: number;
+  ['aria-setsize']?: number;
+  ['aria-posinset']?: number;
 };
 
 type PostProps = React.ComponentPropsWithoutRef<'article'> &
@@ -102,11 +102,7 @@ function Post({
             <TimeAgo dateTime={post.createdAt} />
           )}
         </p>
-        <PostTitle
-          id={`${idAttribute}__title`}
-          className="post__title"
-          tabIndex={-1}
-        >
+        <PostTitle id={`${idAttribute}__title`} className="post__title">
           {linkify ? (
             <Link to={href} onClick={stopPropagation} ref={$link}>
               {post.title}

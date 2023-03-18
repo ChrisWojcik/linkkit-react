@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 
 import SkipLink from '@/web/components/SkipLink';
 import MainNav from '@/web/components/MainNav';
@@ -13,6 +13,7 @@ export default function DefaultLayout() {
       </header>
       <main id="content">
         <Outlet />
+        <ScrollRestoration />
       </main>
     </>
   );

@@ -58,7 +58,7 @@ app.get('*', async (req, res, next) => {
         <link rel="stylesheet" href="/main.css" />
       </head>
       <body>
-        <div id="app" tabindex="-1"></div>
+        <div id="app"></div>
         <script>
           window.__INITIAL_STATE__ = ${JSON.stringify({
             auth: { isAuthenticated: !!user, user },

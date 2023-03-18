@@ -71,6 +71,10 @@ function MainNav() {
       '--scroll-padding-top',
       $el.current.offsetHeight + 'px'
     );
+
+    return () => {
+      document.documentElement.style.setProperty('--scroll-padding-top', '');
+    };
   }, []);
 
   return (

@@ -1,66 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router';
 
 /*
  * Watches for changes to document.title to simulate page navigation
  *
  * when it changes: announces the new title for screen readers and
- * moves focus to the new page's h1, with a fallback to the #app container
+ * moves focus to the top of the page (while preventing scroll)
  */
 export default function RouteAnnouncer() {
+  const isInitialPage = useRef(true);
   const [announcement, setAnnouncement] = useState<string | null>(null);
+  const location = useLocation();
+  const $pageTopFocusMarker = useRef(null);
 
   useEffect(() => {
-    const title = document.querySelector('title');
+    // don't announce the page on initial load, only on
+    // subsequent navigations
+    if (isInitialPage.current) {
+      isInitialPage.current = false;
+      return;
+    }
 
-    if (!title) {
+    const $title = document.querySelector('title');
+
+    if (!$title) {
       return;
     }
 
     const observer = new MutationObserver(() => {
-      if (document.title !== announcement) {
-        setAnnouncement(document.title);
-      }
+      setAnnouncement(document.title);
     });
 
-    observer.observe(title, {
+    observer.observe($title, {
       childList: true,
     });
 
     return () => {
       observer.disconnect();
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [location]);
 
   useEffect(() => {
     if (!announcement) {
       return;
     }
 
-    const titleElement = document.querySelector('h1');
-    const appContainer = document.querySelector('#app') as HTMLElement | null;
+    const scrollPosition = window.pageYOffset;
 
-    if (titleElement && titleElement.hasAttribute('tabindex')) {
-      titleElement.focus();
-      return;
-    }
-
-    if (appContainer && appContainer.hasAttribute('tabindex')) {
-      appContainer.focus();
-    }
+    $pageTopFocusMarker.current.focus();
+    window.scrollTo(0, scrollPosition);
   }, [announcement]);
 
-  if (!announcement) {
-    return null;
-  }
-
   return (
-    <div
-      id="__route-announcer__"
-      className="sr-only"
-      role="alert"
-      aria-live="assertive"
-    >
-      {announcement}
+    <div id="__route-announcer__">
+      <div
+        className="sr-only"
+        ref={$pageTopFocusMarker}
+        tabIndex={-1}
+        aria-hidden={true}
+      />
+      {announcement && (
+        <p className="sr-only" role="alert">
+          {announcement}
+        </p>
+      )}
     </div>
   );
 }

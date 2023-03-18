@@ -1,32 +1,43 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { ProtectedRoute } from '@/web/lib/auth';
 import { DefaultLayout } from '@/web/layouts';
 import { HomePage, NotFoundPage, SubmitPage, PostPage } from '@/web/pages';
+import RouteAnnouncer from '@/web/components/RouteAnnouncer';
 
 const router = createBrowserRouter([
   {
-    element: <DefaultLayout />,
+    element: (
+      <>
+        <RouteAnnouncer />
+        <Outlet />
+      </>
+    ),
     children: [
       {
-        path: '/',
-        element: <HomePage />,
-      },
-      {
-        path: '/submit',
-        element: (
-          <ProtectedRoute redirectPath="/">
-            <SubmitPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: '/k/:postId/:slug',
-        element: <PostPage />,
-      },
-      {
-        path: '*',
-        element: <NotFoundPage />,
+        element: <DefaultLayout />,
+        children: [
+          {
+            path: '/',
+            element: <HomePage />,
+          },
+          {
+            path: '/submit',
+            element: (
+              <ProtectedRoute redirectPath="/">
+                <SubmitPage />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: '/k/:postId/:slug',
+            element: <PostPage />,
+          },
+          {
+            path: '*',
+            element: <NotFoundPage />,
+          },
+        ],
       },
     ],
   },

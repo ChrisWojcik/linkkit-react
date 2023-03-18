@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { RouterProvider } from 'react-router-dom';
 import { AuthProvider } from '@/web/lib/auth';
-import RouteAnnouncer from '@/web/components/RouteAnnouncer';
 import router from './router';
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
-        <RouteAnnouncer />
       </QueryClientProvider>
     </AuthProvider>
   );
