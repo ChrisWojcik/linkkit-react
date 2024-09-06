@@ -14,11 +14,12 @@
     "db:migrate:undo:dev": "env-cmd -f ../local-dev-env/.env sequelize-cli db:migrate:undo",
     "db:seed:dev": "env-cmd -f ../local-dev-env/.env sequelize-cli db:seed --seed 20221208052630-database-seeder",
     "migration:generate:dev": "env-cmd -f ../local-dev-env/.env sequelize-cli migration:generate --name $npm_config_name",
-    "lint": "npm run fix:ts",
+    "lint": "npm run lint:ts",
+    "lint:fix": "npm run fix:ts",
     "format": "npm run prettier:write",
     "lint:ts": "eslint --ext .ts,.js .",
     "fix:ts": "npm run lint:ts -- --fix",
-    "prettier:check": "prettier --check '**/*.{js,ts}'",
+    "prettier": "prettier --check '**/*.{js,ts}'",
     "prettier:write": "prettier --write '**/*.{js,ts}'"
   },
   "dependencies": {
