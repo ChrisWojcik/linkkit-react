@@ -14,7 +14,7 @@ export type BaseButtonProps = {
 };
 
 export type ButtonProps = React.ComponentPropsWithoutRef<'button'> &
-                BaseButtonProps & { href?: undefined; to?: undefined };
+  BaseButtonProps & { href?: undefined; to?: undefined };
 export type ButtonAsAnchorProps = React.ComponentPropsWithoutRef<'a'> &
   BaseButtonProps & { to?: undefined };
 export type ButtonAsRouterLinkProps = LinkProps &

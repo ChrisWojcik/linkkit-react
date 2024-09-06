@@ -18,7 +18,6 @@ function MainNav() {
   const [currentUrl, setCurrentUrl] = useState('');
   const { isAuthenticated } = useContext(AuthContext);
   const location = useLocation();
-  const unused;
 
   function restrictFocus(e: FocusEvent) {
     if (
