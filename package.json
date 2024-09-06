@@ -16,7 +16,7 @@
     "migration:generate:dev": "npm run migration:generate:dev -w api",
     "test": "npm run test --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present",
-    "format": "npm run format --workspaces --if-present"
+    "prettier": "npm run prettier --workspaces --if-present"
   },
   "devDependencies": {
     "concurrently": "^7.5.0",
