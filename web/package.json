@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "env-cmd -f ../local-dev-env/.env nodemon -r tsconfig-paths/register ./src/server.ts --watch './src/server.ts'",
     "build": "webpack --mode=production",
-    "lint": "npm run lint:ts && npm run lint:styles",
+    "lint": "npm run lint:ts -- --max-warnings=0 && npm run lint:styles -- --max-warnings=0",
     "lint:fix": "npm run fix:ts && npm run fix:styles",
     "lint:ts": "eslint --ext .ts,.js,.jsx,.tsx .",
     "fix:ts": "npm run lint:ts -- --fix",
