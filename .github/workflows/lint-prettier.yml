@@ -10,6 +10,7 @@ env:
 
 jobs:
   run-lint-and-prettier:
+    runs-on: ubuntu-latest
     steps:
       - name: Install NodeJS
         uses: actions/setup-node@v2
